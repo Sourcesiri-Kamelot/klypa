@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  klypa:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: klypa-app
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./uploads:/app/uploads
+      - ./output:/app/output
+      - ./temp:/app/temp
+      - ./analytics.json:/app/analytics.json
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+      - OLLAMA_MODEL=llama2
+      - MAX_VIDEO_DURATION=3600
+      - MIN_SCENE_DURATION=3
+      - MAX_SCENE_DURATION=60
+      - OUTPUT_RESOLUTION=1080x1920
+      - OUTPUT_FPS=30
+      - TTS_ENGINE=coqui
+      - ENABLE_ANALYTICS=true
+    restart: unless-stopped
+    depends_on:
+      - ollama
+    networks:
+      - klypa-network
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: klypa-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    restart: unless-stopped
+    networks:
+      - klypa-network
+
+volumes:
+  ollama-data:
+
+networks:
+  klypa-network:
+    driver: bridge
