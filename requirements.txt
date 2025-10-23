@@ -1,0 +1,39 @@
+# Core Video Processing
+openai-whisper>=20231117
+scenedetect[opencv]>=0.6.2
+moviepy>=1.0.3
+opencv-python>=4.8.0
+
+# AI and ML
+torch>=2.0.0
+sentence-transformers>=2.2.2
+transformers>=4.30.0
+
+# TTS Engines
+TTS>=0.21.0  # Coqui TTS
+bark>=0.1.4
+
+# Ollama Integration
+ollama>=0.1.0
+requests>=2.31.0
+
+# Web Framework
+streamlit>=1.28.0
+streamlit-player>=0.1.5
+
+# Cloud and Deployment
+azure-storage-blob>=12.19.0
+python-dotenv>=1.0.0
+
+# Utilities
+numpy>=1.24.0
+pandas>=2.0.0
+pillow>=10.0.0
+pydantic>=2.0.0
+pyyaml>=6.0
+tqdm>=4.65.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-cov>=4.1.0
